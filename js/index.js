@@ -49,4 +49,37 @@ inquirer
 			message: "Please enter your email address:",
 		},
 	])
-	.then((answers) => {});
+	.then((answers) => {
+		const readmeContent = `
+        # ${answers.title}
+
+        ## Description
+        ${answers.description}
+
+        ## Table of Contents
+        - [Installation](#installation)
+        - [Usage](#usage)
+        - [License](#license)
+        - [Contributing](#contributing)
+        - [Tests](#tests)
+        - [Questions](#questions)
+
+        ## Installation
+        ${answers.installation}
+
+        ## Usage
+        ${answers.usage}
+
+        ## License
+        This project is licensed under the ${answers.license} license.
+
+        ## Contributing
+        ${answers.contributing}
+
+        ## Tests
+        ${answers.tests}
+
+        ## Questions
+        For any additional questions, you can reach me at: [${answers.github}](https://github.com/${answers.github})  
+        Email: ${answers.email}`;
+	});
