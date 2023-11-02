@@ -1,4 +1,5 @@
 import inquirer from "inquirer";
+import fs from "fs";
 
 inquirer
 	.prompt([
@@ -49,37 +50,48 @@ inquirer
 			message: "Please enter your email address:",
 		},
 	])
-	.then((answers) => {
+	.then(answers => {
 		const readmeContent = `
-        # ${answers.title}
+# ${answers.title}
 
-        ## Description
-        ${answers.description}
+## Description
+${answers.description}
 
-        ## Table of Contents
-        - [Installation](#installation)
-        - [Usage](#usage)
-        - [License](#license)
-        - [Contributing](#contributing)
-        - [Tests](#tests)
-        - [Questions](#questions)
+## Table of Contents
+| Section       | Description           |
+|---------------|-----------------------|
+| [Installation](#installation) | Instructions for installation. |
+| [Usage](#usage)               | How to use the project. |
+| [License](#license)           | License information. |
+| [Contributing](#contributing) | Guidelines for contributing. |
+| [Tests](#tests)               | Information on running tests. |
+| [Questions](#questions)       | Contact details for questions. |
 
-        ## Installation
-        ${answers.installation}
+## Installation
+${answers.installation}
 
-        ## Usage
-        ${answers.usage}
+## Usage
+${answers.usage}
 
-        ## License
-        This project is licensed under the ${answers.license} license.
+## License
+This project is licensed under the ${answers.license} license.
 
-        ## Contributing
-        ${answers.contributing}
+## Contributing
+${answers.contributing}
 
-        ## Tests
-        ${answers.tests}
+## Tests
+${answers.tests}
 
-        ## Questions
-        For any additional questions, you can reach me at: [${answers.github}](https://github.com/${answers.github})  
-        Email: ${answers.email}`;
+## Questions
+For any additional questions, you can reach me at: [${answers.github}](https://github.com/${answers.github})  
+Email: ${answers.email}`;
+
+		fs.writeFile("README.md", readmeContent, err => {
+			err ? console.error(err) : console.log("README.md has been generated successfully!");
+		});
+	})
+	.catch(error => {
+		error.isTtyError
+			? console.log("Prompt couldn't be rendered in the current environment")
+			: console.log(error);
 	});
