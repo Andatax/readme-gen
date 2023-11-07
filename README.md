@@ -78,7 +78,7 @@ To get started with the README Generator App, follow these steps:
 4. Run the README generator app:
 
    ```
-   node generateReadme.js
+   node js/index.js
    ```
 
 5. You will be prompted to provide project-specific information. Answer the questions as follows:
@@ -96,6 +96,8 @@ To get started with the README Generator App, follow these steps:
    ```
 
 6. The app will generate a `README.md` file with the information you provided, ready for inclusion in your project's repository.
+
+7. You check the check the follwing video for more details: [How to create a README using node](https://drive.google.com/file/d/1aXAO3I6T47XiUbouJ-gBWH1JVZaivP5g/view?usp=drive_link)
 
 ## License
 
